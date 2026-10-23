@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#087f8c">
+  <meta name="description" content="Drink Water: Hydroflow — egyszerű, természet ihlette vízivás-követő.">
+  <title>Drink Water: Hydroflow</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Hydroflow főoldal">
+      <span class="brand-mark">〰</span><span><strong>hydroflow</strong><small>DRINK WATER · FEEL FLOW</small></span>
+    </a>
+    <button id="settingsToggle" class="icon-button" aria-label="Beállítások megnyitása" title="Beállítások">⚙</button>
+  </header>
+
+  <main class="layout">
+    <section class="intro">
+      <p class="eyebrow"><span class="pulse"></span> YOUR DAILY FLOW</p>
+      <h1>Maradj<br><em>folyásban.</em></h1>
+      <p class="subhead">Egy kis korty, egy kis lendület. Kövesd a vízivásodat egyszerűen.</p>
+      <div class="date-line"><span id="todayLabel">MAI ÁLLAPOT</span><span class="dot">•</span><span id="streakLabel">Minden korty számít</span></div>
+    </section>
+
+    <section class="dashboard">
+      <article class="card water-card">
+        <div class="card-heading"><div><p class="eyebrow">MA EDDIG</p><h2><span id="consumed">0</span><small> ml</small></h2></div><span class="water-icon">💧</span></div>
+        <div class="progress-wrap">
+          <div class="progress-track"><div id="progressFill" class="progress-fill"></div></div>
+          <div class="progress-meta"><span id="progressText">0% teljesítve</span><span id="goalText">Cél: 2000 ml</span></div>
+        </div>
+        <div class="water-scene" aria-label="Animált vízszint">
+          <div class="sun"></div><div class="mountain mountain-back"></div><div class="mountain mountain-front"></div>
+          <div id="waterLevel" class="lake"><div class="wave wave-one"></div><div class="wave wave-two"></div></div>
+          <div class="scene-label"><span>HYDRO</span><span>FLOW</span></div>
+        </div>
+        <div class="add-row">
+          <button class="amount-button" data-amount="150">+150 ml</button>
+          <button class="amount-button selected" data-amount="250">+250 ml</button>
+          <button class="amount-button" data-amount="500">+500 ml</button>
+        </div>
+        <button id="addWater" class="primary-button"><span>＋</span> Hozzáadás</button>
+        <p class="microcopy">A mennyiséget a beállításokban is módosíthatod.</p>
+      </article>
+
+      <article class="card side-card">
+        <div class="side-heading"><div><p class="eyebrow">A TE RITMUSOD</p><h3>Mai napló</h3></div><span class="leaf">✳</span></div>
+        <div class="stats-grid">
+          <div class="stat"><span class="stat-icon">🌊</span><strong id="glassCount">0</strong><small>hozzáadás</small></div>
+          <div class="stat"><span class="stat-icon">🎯</span><strong id="remaining">2000</strong><small>ml a célig</small></div>
+        </div>
+        <div class="history-title"><strong>Legutóbbi kortyok</strong><button id="resetDay" class="text-button">Mai nap törlése</button></div>
+        <ul id="historyList" class="history-list"><li class="empty-state">Még nincs bejegyzés. Kezdj egy korttyal! 💧</li></ul>
+        <div class="tip"><span>🌱</span><p><strong>Hydro tipp</strong><br>Legyen kéznél a kulacsod, és igyál, amikor megszomjazol.</p></div>
+      </article>
+    </section>
+    <footer><span>© <span id="year"></span> HYDROFLOW</span><span>Made for a more mindful day <b>↗</b></span></footer>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div id="settingsPanel" class="settings-overlay" aria-hidden="true">
+    <section class="settings-panel" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+      <div class="settings-heading"><div><p class="eyebrow">PERSONALISE YOUR FLOW</p><h2 id="settingsTitle">Beállítások</h2></div><button id="closeSettings" class="icon-button" aria-label="Bezárás">✕</button></div>
+      <label for="goalInput">Napi cél (ml)</label>
+      <input id="goalInput" type="number" min="250" max="10000" step="250" value="2000">
+      <label for="customAmount">Egyéni hozzáadás (ml)</label>
+      <input id="customAmount" type="number" min="25" max="2000" step="25" value="250">
+      <div class="setting-note"><span>🍃</span><p>A cél csak egy személyre szabható emlékeztető, nem orvosi tanács. Az igények egyénenként és naponta változnak.</p></div>
+      <button id="saveSettings" class="primary-button">Beállítások mentése</button>
+      <button id="exportData" class="secondary-button">Adatok exportálása (.json)</button>
+      <button id="clearAll" class="danger-button">Összes adat törlése</button>
+      <p class="settings-foot">Az adatok ezen az eszközön, a böngésződben tárolódnak.</p>
+    </section>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
